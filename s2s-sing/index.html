@@ -5,7 +5,7 @@
   <title>AI Singer Online Test</title>
   <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
   <!-- import CSS -->
-  <link rel="stylesheet" href="static/element-ui/theme-chalk/index.css">
+  <link rel="stylesheet" href="s2s-sing/static/element-ui/theme-chalk/index.css">
   <style>
     html, body {
       margin: 0;
@@ -210,7 +210,7 @@ Experimental results show that our proposed methods are capable of generating hi
         <td><audio controls="" preload="auto"><source src="audio/fastspeech/079029.wav"></audio></td>
         <tr>
 </tbody>
-
+<!-- 
 <tbody>
         <tr>
         <td><audio controls="" preload="auto"><source src="audio/gt/056030.wav"></audio></td>
@@ -258,7 +258,7 @@ Experimental results show that our proposed methods are capable of generating hi
         <td><audio controls="" preload="auto"><source src="audio/fastspeech/023020.wav"></audio></td>
         <tr>
 </tbody>
-
+-->
 
         </table>
       
@@ -272,9 +272,9 @@ Experimental results show that our proposed methods are capable of generating hi
 </div>
 </body>
 <!-- import Vue before Element -->
-<script src="static/vue.js"></script>
+<script src="s2s-sing/static/vue.js"></script>
 <!-- import JavaScript -->
-<script src="static/element-ui/index.js"></script>
+<script src="s2s-sing/static/element-ui/index.js"></script>
 <script>
     new Vue({
         el: '#app',
@@ -285,9 +285,6 @@ Experimental results show that our proposed methods are capable of generating hi
         },
         methods: {
             handleClick: function () {
-                this.activeNames = ['coll_1'];
-                this.requestCollContent();
-                this.audioSrc = '/synthesize?syn_model=' + this.model_value + '&syn_type=text&syn_text=' + encodeURIComponent(this.text);
             },
         }
     })
