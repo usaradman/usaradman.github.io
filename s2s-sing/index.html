@@ -60,6 +60,10 @@
       
     }
 
+    .gt-col {
+      border: 2px;
+    }
+
     .el-row {
       margin-bottom: 40px;
     }
@@ -107,7 +111,7 @@
   <template>
     <el-row type="flex" class='head-style' justify="center">
         <el-col>
-        <div class='title-style'>IMPROVING END-TO-END CHINESE SINGING VOICE SYNTHESIS SYSTEM WITH GAUSSIAN BIAS AND STATE LEVEL INPUT FEATURES</div>
+        <div class='title-style'>IMPROVING END-TO-END SINGING VOICE SYNTHESIS SYSTEM WITH GAUSSIAN BIAS AND STATE LEVEL INPUT FEATURES</div>
         <div class='author-style'>Jinba Xiao, Peng Yang, Ying Zhang, Hao Che, Xiaorui Wang</div>
         </el-col>
     </el-row>
@@ -115,8 +119,8 @@
     <el-row type="flex" class='abstract-style' justify="center">
         <el-col>
             <h2>Abstract</h2>
-            <div>In recent years, the attention-based end-to-end model has achieved significant progress in text-to-speech (TTS) tasks. However, in the singing voices synthesis (SVS) task, this method has not been fully applied because of the instability of pronunciation and rhythm. In this work, we propose two methods to address these two issues. One is adding a variant Gaussian bias to the attention mechanism according to the input note duration, which can ensure the rhythm of the synthesis results without extra phoneme duration prediction module. And another is expanding the input linguistic and musical features from phoneme level to state level, which can effectively enhance the model stability. 
-Experimental results show that our proposed methods help the model to generate high-quality singing voices with higher accuracy in terms of pitch, rhythm and pronunciation compared to the previous proposed vanilla Tacotron-based SVS system.</div>
+            <div>In recent years, the attention-based end-to-end model has achieved significant progress in text-to-speech (TTS) tasks. However, in the singing voices synthesis (SVS) task, this method has not been fully applied because of the instability of pronunciation and inaccurate rhythm. In this work, we propose an end-to-end SVS system with several modifications to address these two issues. First, we apply a variant Gaussian bias to the attention mechanism based on the input note duration to ensure accurate rhythm of the synthesis results without extra phoneme duration prediction module. Second, we expand the input linguistic and musical features from phoneme level to state level, which can effectively enhance the model stability. Furthermore, we apply a parallel schedule sampling training strategy and add a bottleneck in decoder pre-net to prevent overfitting problems caused by feeding ground-truth features in auto-regressive training.
+Experimental results show that our proposed methods help the model generate high-quality singing voices with higher accuracy in terms of pitch, rhythm and pronunciation compared to the previous proposed vanilla Tacotron-based SVS system.</div>
       <h2 style='margin-top:40px;'>Audio Samples</h2>
         </el-col>
     </el-row>
@@ -129,11 +133,11 @@ Experimental results show that our proposed methods help the model to generate h
         <tr>
           <th>Recording</th>
           <th>S2S-Pho</th>
-          <th>S2S-Pho-Gau</th>
-          <th>S2S-State3-Gau</th>
-          <th>S2S-State5-Gau</th>
-          <th>S2S-State7-Gau</th>
-          <th>FastSpeech</th>
+          <th>S2S-Pho-BP</th>
+          <th>S2S-pho-Gau-BP</th>
+          <th>S2S-State3-Gau-BP</th>
+          <th>S2S-State5-Gau-BP</th>
+          <th>S2S-State7-Gau-BP</th>
         </tr>
       </thead>
 
@@ -141,96 +145,59 @@ Experimental results show that our proposed methods help the model to generate h
 <tbody>
         <tr>
         <td><audio controls="" preload="auto"><source src="audio/gt/082034.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho/082034.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho-gau/082034.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state3-gau/082034.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state5-gau/082034.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state7-gau/082034.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/fastspeech/082034.wav"></audio></td>
+        <td class='gt-col' ><audio controls="" preload="auto"><source src="audio/pho/082034.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/pho-32prenet/082034.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/pho-gau-32prenet/082034.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state3-gau-32prenet/082034.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state5-gau-32prenet/082034.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state7-gau-32prenet/082034.wav"></audio></td>
         <tr>
 </tbody>
-
-
-<tbody>
-        <tr>
-        <td><audio controls="" preload="auto"><source src="audio/gt/084042.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho/084042.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho-gau/084042.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state3-gau/084042.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state5-gau/084042.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state7-gau/084042.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/fastspeech/084042.wav"></audio></td>
-        <tr>
-</tbody>
-
-<tbody>
-        <tr>
-        <td><audio controls="" preload="auto"><source src="audio/gt/023022.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho/023022.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho-gau/023022.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state3-gau/023022.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state5-gau/023022.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state7-gau/023022.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/fastspeech/023022.wav"></audio></td>
-        <tr>
-</tbody>
-
 <tbody>
         <tr>
         <td><audio controls="" preload="auto"><source src="audio/gt/056043.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho/056043.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho-gau/056043.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state3-gau/056043.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state5-gau/056043.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state7-gau/056043.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/fastspeech/056043.wav"></audio></td>
+        <td class='gt-col' ><audio controls="" preload="auto"><source src="audio/pho/056043.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/pho-32prenet/056043.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/pho-gau-32prenet/056043.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state3-gau-32prenet/056043.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state5-gau-32prenet/056043.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state7-gau-32prenet/056043.wav"></audio></td>
         <tr>
 </tbody>
 
 <tbody>
         <tr>
         <td><audio controls="" preload="auto"><source src="audio/gt/079027.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho/079027.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho-gau/079027.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state3-gau/079027.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state5-gau/079027.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state7-gau/079027.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/fastspeech/079027.wav"></audio></td>
+        <td class='gt-col' ><audio controls="" preload="auto"><source src="audio/pho/079027.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/pho-32prenet/079027.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/pho-gau-32prenet/079027.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state3-gau-32prenet/079027.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state5-gau-32prenet/079027.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state7-gau-32prenet/079027.wav"></audio></td>
         <tr>
 </tbody>
 
 <tbody>
         <tr>
-        <td><audio controls="" preload="auto"><source src="audio/gt/079029.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho/079029.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho-gau/079029.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state3-gau/079029.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state5-gau/079029.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state7-gau/079029.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/fastspeech/079029.wav"></audio></td>
-        <tr>
-</tbody>
-<tbody>
-        <tr>
         <td><audio controls="" preload="auto"><source src="audio/gt/056030.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho/056030.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho-gau/056030.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state3-gau/056030.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state5-gau/056030.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state7-gau/056030.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/fastspeech/056030.wav"></audio></td>
+        <td class='gt-col' ><audio controls="" preload="auto"><source src="audio/pho/056030.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/pho-32prenet/056030.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/pho-gau-32prenet/056030.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state3-gau-32prenet/056030.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state5-gau-32prenet/056030.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state7-gau-32prenet/056030.wav"></audio></td>
         <tr>
 </tbody>
 
 <tbody>
         <tr>
         <td><audio controls="" preload="auto"><source src="audio/gt/082053.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho/082053.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho-gau/082053.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state3-gau/082053.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state5-gau/082053.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state7-gau/082053.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/fastspeech/082053.wav"></audio></td>
+        <td class='gt-col' ><audio controls="" preload="auto"><source src="audio/pho/082053.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/pho-32prenet/082053.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/pho-gau-32prenet/082053.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state3-gau-32prenet/082053.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state5-gau-32prenet/082053.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state7-gau-32prenet/082053.wav"></audio></td>
         <tr>
 </tbody>
 
@@ -238,23 +205,12 @@ Experimental results show that our proposed methods help the model to generate h
 <tbody>
         <tr>
         <td><audio controls="" preload="auto"><source src="audio/gt/079032.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho/079032.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho-gau/079032.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state3-gau/079032.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state5-gau/079032.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state7-gau/079032.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/fastspeech/079032.wav"></audio></td>
-        <tr>
-</tbody>
-<tbody>
-        <tr>
-        <td><audio controls="" preload="auto"><source src="audio/gt/023020.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho/023020.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/pho-gau/023020.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state3-gau/023020.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state5-gau/023020.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/state7-gau/023020.wav"></audio></td>
-        <td><audio controls="" preload="auto"><source src="audio/fastspeech/023020.wav"></audio></td>
+        <td class='gt-col' ><audio controls="" preload="auto"><source src="audio/pho/079032.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/pho-32prenet/079032.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/pho-gau-32prenet/079032.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state3-gau-32prenet/079032.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state5-gau-32prenet/079032.wav"></audio></td>
+        <td><audio controls="" preload="auto"><source src="audio/state7-gau-32prenet/079032.wav"></audio></td>
         <tr>
 </tbody>
 
